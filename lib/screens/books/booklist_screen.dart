@@ -31,7 +31,7 @@ class BookGrid extends StatefulWidget {
 }
 
 class _BookGridState extends State<BookGrid> {
-  BookProvider books = BookProvider();
+  CoffeeProvider books = CoffeeProvider();
   List<Book>? searchBooks = [];
   TextEditingController editingController = TextEditingController();
 
@@ -60,7 +60,7 @@ class _BookGridState extends State<BookGrid> {
   }
 
   _getBook() async{
-    return await books.getBooks();
+    return await books.getCoffee();
   }
 
   @override
@@ -147,7 +147,7 @@ class _BookGridState extends State<BookGrid> {
 
             if (selectedCategoryList.isNotEmpty) {
               searchBooks = bookTemp.where((bk) {
-                return selectedCategoryList.contains(bk.category)
+                return selectedCategoryList.contains(bk.coffeeName)
                     ? true
                     : false;
               }).toList();
@@ -170,7 +170,7 @@ class _BookGridState extends State<BookGrid> {
                     searchBooks = _listBook;
                   } else {
                     searchBooks = _listBook.where((bk) {
-                      return selectedCategoryList.contains(bk.category)
+                      return selectedCategoryList.contains(bk.coffeeDescription)
                           ? true
                           : false;
                     }).toList();
@@ -265,7 +265,7 @@ class _BookGridState extends State<BookGrid> {
 
             if (selectedCategoryList.isNotEmpty) {
               searchBooks = bookTemp.where((bk) {
-                return selectedCategoryList.contains(bk.category)
+                return selectedCategoryList.contains(bk.coffeeName)
                     ? true
                     : false;
               }).toList();

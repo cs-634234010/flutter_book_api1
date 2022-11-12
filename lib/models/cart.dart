@@ -1,17 +1,19 @@
 class CartItem {
   //Code
-  final int bookId;
-  final String title;
+  final int coffeeId;
+  final String coffeeName;
+  final String coffeeDescription;
+  final int coffeePrice;
+  final String coffeePicture;
   final int qty;
-  final int price;
-  final String thumbnailUrl;
 
   CartItem({
-    required this.bookId,
-    required this.title,
-    required this.qty,
-    required this.price,
-    required this.thumbnailUrl
+    required this.coffeeId, 
+    required this.coffeeName, 
+    required this.coffeeDescription, 
+    required this.coffeePrice, 
+    required this.coffeePicture,
+    required this.qty,   
   });
   
 }

@@ -21,10 +21,11 @@ class BookDetailScreen extends StatelessWidget {
   Widget buildButtomSheet(BuildContext context) {
     return AddBookItem(
         cartItem: CartItem(
-            bookId: book.bookId,
-            title: book.title,
-            price: book.price,
-            thumbnailUrl: book.thumbnailUrl,
+            coffeeId: book.coffeeId,
+            coffeeName: book.coffeeName,
+            coffeePrice: book.coffeePrice,
+            coffeePicture: book.coffeeDescription,
+            coffeeDescription: book.coffeeDescription,
             qty: 1));
   }
 
@@ -33,11 +34,11 @@ class BookDetailScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     final DateFormat formatter = DateFormat(dotenv.env['APP_DATE_FORMAT']);
     final String publishedate =
-        formatter.format(DateTime.parse(book.publishedDate));
+        formatter.format(DateTime.parse(book.coffeeDescription));
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(book.title),
+          title: Text(book.coffeeName),
         ),
         backgroundColor: Colors.white,
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -70,7 +71,7 @@ class BookDetailScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          book.title,
+                          book.coffeeName,
                           style: GoogleFonts.lato(
                               textStyle: const TextStyle(
                                   color: Colors.blueAccent,
@@ -82,7 +83,7 @@ class BookDetailScreen extends StatelessWidget {
                     const SizedBox(
                       height: 2,
                     ),
-                    bookFields("Author : ", book.author),
+                    bookFields("Author : ", book.coffeeName),
                     const SizedBox(
                       height: 2,
                     ),
@@ -101,7 +102,7 @@ class BookDetailScreen extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                           child: Text(
-                            '    ฿ ${book.price}    ',
+                            '    ฿ ${book.coffeePrice}    ',
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     color: Colors.white,
@@ -111,22 +112,13 @@ class BookDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    bookFields("Category : ", book.category),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    bookFields(
-                        "Pages : ", '${book.pageCount.toString()} pages'),
+                    bookFields("Category : ", book.coffeeName),
                     const SizedBox(
                       height: 2,
                     ),
                     bookFields("Publish Date : ", publishedate),
                     const SizedBox(
                       height: 2,
-                    ),
-                    bookFields("ISBN : ", book.isbn),
-                    const SizedBox(
-                      height: 5,
                     ),
                     Text(
                       "Description : ",
@@ -138,12 +130,6 @@ class BookDetailScreen extends StatelessWidget {
                       color: Colors.white,
                       margin: const EdgeInsets.only(top: 5, bottom: 5),
                       padding: const EdgeInsets.all(5),
-                      child: Text(
-                        book.shortDescription,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500)),
-                      ),
                     ),
                     const SizedBox(
                       height: 2,
@@ -184,7 +170,7 @@ class BookDetailScreen extends StatelessWidget {
                 //Using CachedNetworkImage
                 Center(
                   child: CachedNetworkImage(
-                    imageUrl: book.thumbnailUrl,
+                    imageUrl: book.coffeePicture,
                     height: size.height * 0.24,
                     fit: BoxFit.fitHeight,
                     placeholder: (context, url) => Image.asset(

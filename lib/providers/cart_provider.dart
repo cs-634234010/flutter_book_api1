@@ -20,7 +20,7 @@ class CartProvider with ChangeNotifier {
   int get totalAmount {
     var total = 0;
     _items.forEach((key, cartItem) {
-      total += cartItem.price * cartItem.qty;
+      total += cartItem.coffeePrice * cartItem.qty;
     });
     return total;
   }
@@ -32,8 +32,8 @@ class CartProvider with ChangeNotifier {
       _items.forEach((key, item) {
         String jsonStringItem = '''
       {
-        "bookId": ${item.bookId},
-        "price": ${item.price},
+        "bookId": ${item.coffeeId},
+        "price": ${item.coffeePrice},
         "qty": ${item.qty}
       },''';
         jsonString = jsonString + jsonStringItem;
@@ -49,26 +49,28 @@ class CartProvider with ChangeNotifier {
   }
 
   void addItem(CartItem cartItem) {
-    if (_items.containsKey(cartItem.bookId)) {
+    if (_items.containsKey(cartItem.coffeeId)) {
       _items.update(
-        cartItem.bookId,
+        cartItem.coffeeId,
         (existingCartItem) => CartItem(
-          bookId: existingCartItem.bookId,
-          title: existingCartItem.title,
-          price: existingCartItem.price,
+          coffeeId: existingCartItem.coffeeId,
+          coffeeName: existingCartItem.coffeeName,
+          coffeePrice: existingCartItem.coffeePrice,
           qty: cartItem.qty,
-          thumbnailUrl: existingCartItem.thumbnailUrl,
+          coffeePicture: existingCartItem.coffeePicture,
+          coffeeDescription: cartItem.coffeeDescription
         ),
       );
     } else {
       _items.putIfAbsent(
-        cartItem.bookId,
+        cartItem.coffeeId,
         () => CartItem(
-          bookId: cartItem.bookId,
-          title: cartItem.title,
-          price: cartItem.price,
+          coffeeId: cartItem.coffeeId,
+          coffeeName: cartItem.coffeeName,
+          coffeePrice: cartItem.coffeePrice,
           qty: cartItem.qty,
-          thumbnailUrl: cartItem.thumbnailUrl,
+          coffeePicture: cartItem.coffeePicture,
+          coffeeDescription: cartItem.coffeeDescription
         ),
       );
     }
@@ -82,11 +84,12 @@ class CartProvider with ChangeNotifier {
     _items.update(
       bookId,
       (existingCartItem) => CartItem(
-        bookId: existingCartItem.bookId,
-        title: existingCartItem.title,
-        price: existingCartItem.price,
+        coffeeId: existingCartItem.coffeeId,
+        coffeeName: existingCartItem.coffeeName,
+        coffeePrice: existingCartItem.coffeePrice,
         qty: existingCartItem.qty + 1,
-        thumbnailUrl: existingCartItem.thumbnailUrl,
+        coffeePicture: existingCartItem.coffeePicture,
+        coffeeDescription:existingCartItem.coffeeDescription
       ),
     );
   }
@@ -95,13 +98,14 @@ class CartProvider with ChangeNotifier {
     _items.update(
       bookId,
       (existingCartItem) => CartItem(
-        bookId: existingCartItem.bookId,
-        title: existingCartItem.title,
-        price: existingCartItem.price,
+        coffeeId: existingCartItem.coffeeId,
+        coffeeName: existingCartItem.coffeeName,
+        coffeePrice: existingCartItem.coffeePrice,
         qty: (existingCartItem.qty > 1)
             ? existingCartItem.qty - 1
             : existingCartItem.qty,
-        thumbnailUrl: existingCartItem.thumbnailUrl,
+        coffeePicture: existingCartItem.coffeePicture,
+        coffeeDescription: existingCartItem.coffeeDescription
       ),
     );
   }

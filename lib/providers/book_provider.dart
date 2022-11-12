@@ -10,12 +10,12 @@ import 'package:flutter_book_api1/models/book.dart';
 
 
 
-class BookProvider {
+class CoffeeProvider {
 
 
-  Future<List<Book>> getBooks() async {
+  Future<List<Book>> getCoffee() async {
     //Using dotenv for API_URL
-    String url ='${dotenv.env['API_URL']}books';
+    String url ='${dotenv.env['API_URL']}coffees';
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
@@ -39,9 +39,9 @@ class BookProvider {
     }
 
 
-  Book findByBookId(int bookId, List<Book> items) {
+  Book findByCoffee(int bookId, List<Book> items) {
     //Find book by BookId
-    return items.firstWhere((bk) => bk.bookId == bookId);
+    return items.firstWhere((bk) => bk.coffeeId == bookId);
    
   }
 
@@ -49,7 +49,7 @@ class BookProvider {
     //Find book by Title
     return items
     .where(
-      (bk) => bk.title.toLowerCase().contains(searchTitle.toLowerCase())    )
+      (bk) => bk.coffeeName.toLowerCase().contains(searchTitle.toLowerCase())    )
     .toList();
 
   

@@ -14,8 +14,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Declare cartProvider
-
-
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Cart'),
@@ -28,11 +27,11 @@ class CartScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               //Change 1 to using value from cartProvider
-              itemCount: 1,
+              itemCount: cartProvider.items.length,
               itemBuilder: (ctx, i) {
                 return SlideableItem(
                   //Change to using value from cartProvider
-                  item: (CartItem(bookId: 0,title: "test",qty: 0, price:0, thumbnailUrl: "https://images.unsplash.com/photo-1529589941132-43606325dfb4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=753&q=80")),
+                  item: (cartProvider.items.values.toList()[i]),
                 );
               },
             ),
@@ -53,7 +52,7 @@ class CartScreen extends StatelessWidget {
                   Chip(
                     //Change 0 to using value from cartProvider
                     label: Text(
-                      '\$${NumberFormat("#,###").format(0)}',
+                      '\$${NumberFormat("#,###").format(cartProvider.totalAmount)}',
                       style: TextStyle(
                         color:
                             Theme.of(context).primaryTextTheme.headline6!.color,

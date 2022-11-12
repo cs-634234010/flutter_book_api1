@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:flutter_book_api1/screens/login/login_screen.dart';
+//import 'package:flutter_book_api1/screens/login/login_screen.dart';
 import 'package:flutter_book_api1/screens/shared/shared_functions.dart';
 
 class BottomMenu extends StatelessWidget {
@@ -24,17 +24,17 @@ class BottomMenu extends StatelessWidget {
       iconSize: 30,
       items: [
         BottomNavyBarItem(
-          title: const Text("Books"),
+          title: const Text("Coffees"),
           icon: const Icon(
-            Icons.book,
+            Icons.coffee,
             color: Colors.orangeAccent,
           ),
           activeColor: Colors.white,
         ),
         BottomNavyBarItem(
-          title: const Text("My Orders"),
+          title: const Text("Cart"),
           icon: const Icon(
-            Icons.list_outlined,
+            Icons.card_giftcard,
             color: Colors.blueAccent,
           ),
           activeColor: Colors.white,
@@ -71,7 +71,7 @@ class BottomMenu extends StatelessWidget {
     await showConfirmDialog(context, "Sign out?", "Do you want to sign out?",
         () {
       signOut();
-      gotoLoginPage(context);
+      //gotoLoginPage(context);
     }, () {
       Navigator.of(context).pop();
     });
@@ -86,12 +86,12 @@ class BottomMenu extends StatelessWidget {
     prefs.remove('token');
   }
 
-  void gotoLoginPage(context) {
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-        (route) => false);
-  }
+  // void gotoLoginPage(context) {
+  //   Navigator.pushAndRemoveUntil(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => const LoginScreen(),
+  //       ),
+  //       (route) => false);
+  // }
 }

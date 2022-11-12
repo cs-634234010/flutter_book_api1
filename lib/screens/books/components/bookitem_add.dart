@@ -49,7 +49,7 @@ class _AddBookItemState extends State<AddBookItem> {
             SizedBox(
               width: double.infinity,
               child: Text(
-                widget.cartItem.title,
+                widget.cartItem.coffeeName,
                 textAlign: TextAlign.start,
                 style: const TextStyle(
                   color: Colors.blue,
@@ -75,7 +75,7 @@ class _AddBookItemState extends State<AddBookItem> {
                       color: Colors.green,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Text(
-                    '    ฿ ${widget.cartItem.price}    ',
+                    '    ฿ ${widget.cartItem.coffeePrice}    ',
                     style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Colors.white,
@@ -165,7 +165,7 @@ class _AddBookItemState extends State<AddBookItem> {
             SizedBox(
               width: double.infinity,
               child: Text(
-                'Total: \$${(widget.cartItem.price * _qty)}',
+                'Total: \$${(widget.cartItem.coffeePrice * _qty)}',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 22,
@@ -192,7 +192,7 @@ class _AddBookItemState extends State<AddBookItem> {
 
                       },
                       child: Text(            
-                        (context.read<CartProvider>().items.containsKey(widget.cartItem.bookId) == false)
+                        (context.read<CartProvider>().items.containsKey(widget.cartItem.coffeeId) == false)
                             ? "Add to Cart"
                             : "Update Cart",
                         style: const TextStyle(

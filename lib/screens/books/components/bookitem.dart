@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +19,13 @@ class BookItem extends StatelessWidget {
   Widget buildButtomSheet(BuildContext context) {
     return AddBookItem(
         cartItem: CartItem(
-            bookId: book.bookId,
-            title: book.title,
-            price: book.price,
-            thumbnailUrl: book.thumbnailUrl,
-            qty: 1));
+            coffeeId: book.coffeeId,
+            coffeeName: book.coffeeName,
+            coffeePrice: book.coffeePrice,
+            coffeePicture: book.coffeeDescription,
+            coffeeDescription: book.coffeeDescription,
+            qty: 1
+            ));
   }
 
   @override
@@ -32,7 +36,7 @@ class BookItem extends StatelessWidget {
         footer: GridTileBar(
           backgroundColor: Colors.black87.withOpacity(0.7),
           title: Text(
-            book.title,
+            book.coffeeName,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
@@ -58,7 +62,7 @@ class BookItem extends StatelessWidget {
           },
           //Using CachedNetworkImage
           child: CachedNetworkImage(
-            imageUrl: book.thumbnailUrl,
+            imageUrl: book.coffeeDescription,
             fit: BoxFit.fitWidth,
             placeholder: (context, url) => Image.asset(
               'assets/images/book_loading.png',

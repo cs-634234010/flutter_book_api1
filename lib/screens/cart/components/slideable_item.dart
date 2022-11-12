@@ -36,11 +36,11 @@ class SlideableItem extends StatelessWidget {
             ),
           ]),
       child: CartItemWidget(
-          bookId: item.bookId,
-          price: item.price,
+          bookId: item.coffeeId,
+          price: item.coffeePrice,
           qty: item.qty,
-          title: item.title,
-          thumbnailUrl: item.thumbnailUrl),
+          title: item.coffeeName,
+          thumbnailUrl: item.coffeePicture),
     );
   }
 }
